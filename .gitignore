@@ -1,0 +1,10 @@
+# spawn:start
+spawn/.metadata/temp/**
+# spawn:end
+
+# Extension authoring (Python smoke-compile)
+extsrc/**/__pycache__/
+
+# Local pytest
+tests/**/__pycache__/
+.pytest_cache/

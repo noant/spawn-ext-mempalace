@@ -1,0 +1,9 @@
+# spawn:core:start
+spawn/.core/**
+spawn/.metadata/**
+spawn/.extend/**
+# spawn:core:end
+# spawn:ext:start
+spec/seeds/_DONE_*.md
+spec/tasks/**/_DONE_*/_DONE_*.md
+# spawn:ext:end
