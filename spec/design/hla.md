@@ -2,7 +2,7 @@
 
 ## Repository role
 
-This repository is a **Spawn extension** (**`extsrc/`**) that installs MemPalace scaffolding into consumer repos: **`after_install.py`** installs the CLI and drives **`mempalace init`**, templated **`extsrc/files/.mempalace/**`** (guides, MCP bridge stub, wakeup artifact hook), **`extsrc/mcp/{windows,linux,macos}.json`** merge two stdio MCP servers per host OS with **`MEMPALACE_PALACE_PATH=.mempalace/palace`** (primary server via **`python -m mempalace.mcp_server`** on Windows; **`python3 -m mempalace.mcp_server`** on Linux/macOS in pack defaults), and **`extsrc/skills/*.md`** are rendered per **`config.yaml`**.
+This repository is a **Spawn extension** (**`extsrc/`**) that installs MemPalace scaffolding into consumer repos: **`after_install.py`** pins **`mempalace==3.3.5`** on PyPI (mirrored in **`.mempalace/ext/requirements-mempalace.txt`**) and drives **`mempalace init`**, templated **`extsrc/files/.mempalace/**`** (guides, MCP bridge stub, wakeup artifact hook), **`extsrc/mcp/{windows,linux,macos}.json`** merge two stdio MCP servers per host OS with **`MEMPALACE_PALACE_PATH=.mempalace/palace`** (primary server via **`python -m mempalace.mcp_server`** on Windows; **`python3 -m mempalace.mcp_server`** on Linux/macOS in pack defaults), and **`extsrc/skills/*.md`** are rendered per **`config.yaml`**.
 
 ## Runtime and data flows
 

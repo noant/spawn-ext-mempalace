@@ -39,7 +39,7 @@ import sys
 from pathlib import Path
 
 # Pin must match a version published on https://pypi.org/project/mempalace/
-MEMPALACE_PYPI_VERSION = "3.3.4"
+MEMPALACE_PYPI_VERSION = "3.3.5"
 
 
 def _ascii_safe(s: str) -> str:
