@@ -166,44 +166,70 @@ def _mempalace_cli() -> list[str]:
     return [sys.executable, "-m", "mempalace"]
 
 
-def _install_mempalace_pip(spec: str) -> int:
-    """Install mempalace into the same environment as ``sys.executable``.
+def _requirements_file(root: Path) -> Path:
+    return root / ".mempalace" / "ext" / "requirements-mempalace.txt"
+
+
+def _install_pip_packages(*specs: str) -> int:
+    """Install packages into the same environment as ``sys.executable``.
 
     Prefer ``python -m pip`` when the ``pip`` module exists; otherwise use
     ``uv pip install --python=...`` if ``uv`` is available (covers uv-managed
     interpreters without pip).
     """
+    if not specs:
+        return 0
+
     if importlib.util.find_spec("pip") is not None:
-        cmd = [sys.executable, "-m", "pip", "install", spec]
+        cmd = [sys.executable, "-m", "pip", "install", *specs]
         _err("mempalace extension: " + " ".join(cmd))
         try:
             _run_child(cmd, env=_subprocess_env())
         except subprocess.CalledProcessError as e:
             _err(
-                f"mempalace extension: pip install failed; install manually, e.g. pip install {spec}",
+                "mempalace extension: pip install failed; install manually, e.g. pip install "
+                + " ".join(specs),
             )
             return int(e.returncode) if e.returncode is not None else 1
         return 0
 
     uv = shutil.which("uv")
     if uv:
-        cmd = [uv, "pip", "install", f"--python={sys.executable}", spec]
+        cmd = [uv, "pip", "install", f"--python={sys.executable}", *specs]
         _err("mempalace extension: " + " ".join(cmd))
         try:
             _run_child(cmd, env=_subprocess_env())
         except subprocess.CalledProcessError as e:
             _err(
                 "mempalace extension: uv pip install failed; install manually, e.g. "
-                f"uv pip install --python={sys.executable} {spec}",
+                f"uv pip install --python={sys.executable} "
+                + " ".join(specs),
             )
             return int(e.returncode) if e.returncode is not None else 1
         return 0
 
     _err(
         "mempalace extension: no pip module on this Python and `uv` not found on PATH; "
-        f"install manually, e.g. uv pip install --python={sys.executable} {spec}",
+        f"install manually, e.g. uv pip install --python={sys.executable} "
+        + " ".join(specs),
     )
     return 1
+
+
+def _install_from_requirements(root: Path) -> int:
+    """Install pinned deps from the shipped requirements file, with a defensive fallback."""
+    req = _requirements_file(root)
+    if req.is_file():
+        return _install_pip_packages("-r", str(req))
+
+    _err(
+        "mempalace extension: requirements file missing; falling back to inline pins "
+        f"({req})",
+    )
+    return _install_pip_packages(
+        f"mempalace=={MEMPALACE_PYPI_VERSION}",
+        "attrs>=22.2.0",
+    )
 
 
 def main() -> int:
@@ -216,8 +242,8 @@ def main() -> int:
             "mempalace extension: skipping pip install (MEMPALACE_EXTENSION_SKIP_PIP set)",
         )
     else:
-        spec = f"mempalace=={MEMPALACE_PYPI_VERSION}"
-        rc = _install_mempalace_pip(spec)
+        root = Path.cwd().resolve()
+        rc = _install_from_requirements(root)
         if rc != 0:
             return rc
         _err("mempalace extension: package install step finished.")
