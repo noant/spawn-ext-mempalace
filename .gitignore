@@ -1,5 +1,7 @@
 # spawn:start
 spawn/.metadata/temp/**
+spawn/.metadata/.spawn.lock
+spec/.config/**
 # spawn:end
 
 # Extension authoring (Python smoke-compile)

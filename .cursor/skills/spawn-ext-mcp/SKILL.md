@@ -29,6 +29,9 @@ Goal: declare MCP servers bundled with the extension so Spawn merges them per ho
 Changing **`servers`**, transports, **`spawn_stdio_proxy`**, **`env`** contract, or **`capabilities`** is consumer-visible MCP behavior — **prompt** the author to bump **`version`** via **`spawn-ext-increment-version`** before publishing.
 
 
+Hints:
+- Use the platform ask tool when available (R10-ask in spec/main.md); otherwise, stop and request input from the user.
+
 Mandatory reads:
 - `spawn-ext-guide/ai/core.md` - Machine baseline — terms, extsrc tree rules, static vs artifact, name and uniqueness, install outputs.
 - `spawn-ext-guide/ai/mcp-json.md` - Machine schema for extsrc/mcp/windows.json, linux.json, macos.json — servers, OS selection, aligned name sets, transport, spawn_stdio_proxy (stdio IDE proxy), env, capabilities, validation against check, JSON examples.

@@ -15,6 +15,9 @@ Goal: before editing YAML heavily, decide what the methodology teaches and where
 7. **Version:** If namespaces, static vs artifact split, or read surfaces change shipped methodology, **prompt** the author to bump **`version`** via **`spawn-ext-increment-version`** before consumers upgrade.
 
 
+Hints:
+- Use the platform ask tool when available (R10-ask in spec/main.md); otherwise, stop and request input from the user.
+
 Mandatory reads:
 - `spawn-ext-guide/ai/core.md` - Machine baseline — terms, extsrc tree rules, static vs artifact, name and uniqueness, install outputs.
 - `spawn-ext-guide/ai/config-yaml.md` - Machine schema for config.yaml — keys, files/folders/skills modes, reads, ignores, setup, annotated example.

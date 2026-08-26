@@ -14,6 +14,9 @@ Goal: add short methodology reminders Spawn injects beside reads and skills — 
 6. **Version:** If hint text or which strings are global vs local changes observable behavior for consumers, **prompt** the author to bump **`version`** via **`spawn-ext-increment-version`** before release.
 
 
+Hints:
+- Use the platform ask tool when available (R10-ask in spec/main.md); otherwise, stop and request input from the user.
+
 Mandatory reads:
 - `spawn-ext-guide/ai/core.md` - Machine baseline — terms, extsrc tree rules, static vs artifact, name and uniqueness, install outputs.
 - `spawn-ext-guide/ai/config-yaml.md` - Machine schema for config.yaml — keys, files/folders/skills modes, reads, ignores, setup, annotated example.

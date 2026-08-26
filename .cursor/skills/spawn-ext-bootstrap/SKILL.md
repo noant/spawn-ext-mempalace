@@ -14,6 +14,9 @@ Goal: start a new Spawn extension (methodology pack) from zero or from an existi
 6. **Later:** whenever packaging meaningfully evolves after bootstrap, **prompt** a **`version`** bump using **`spawn-ext-increment-version`** before publishing (initial `0.1.0` or `1.0.0` is typical until first stable story).
 
 
+Hints:
+- Use the platform ask tool when available (R10-ask in spec/main.md); otherwise, stop and request input from the user.
+
 Mandatory reads:
 - `spawn-ext-guide/ai/core.md` - Machine baseline — terms, extsrc tree rules, static vs artifact, name and uniqueness, install outputs.
 - `spawn-ext-guide/ai/cli.md` - Machine CLI reference — spawn init/extension/build commands, extensions.yaml bundle shape, authoring checklist.

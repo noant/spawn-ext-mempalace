@@ -18,6 +18,9 @@ Goal: update **`version`** at the top level of **`extsrc/config.yaml`** before p
 Do **not** bump **`schema`** unless you migrate to a new Spawn **`config.yaml`** format version documented by Spawn.
 
 
+Hints:
+- Use the platform ask tool when available (R10-ask in spec/main.md); otherwise, stop and request input from the user.
+
 Mandatory reads:
 - `spawn-ext-guide/ai/core.md` - Machine baseline — terms, extsrc tree rules, static vs artifact, name and uniqueness, install outputs.
 - `spawn-ext-guide/ai/config-yaml.md` - Machine schema for config.yaml — keys, files/folders/skills modes, reads, ignores, setup, annotated example.

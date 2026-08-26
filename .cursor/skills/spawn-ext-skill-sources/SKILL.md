@@ -15,6 +15,9 @@ Goal: add or change agent skills shipped with the extension.
 7. **Version:** Adding, removing, or materially changing skills or their **`required-read`** affects consumers — **prompt** the author to bump **`version`** via **`spawn-ext-increment-version`** before release (unless the change is typo-only text with no behavior impact).
 
 
+Hints:
+- Use the platform ask tool when available (R10-ask in spec/main.md); otherwise, stop and request input from the user.
+
 Mandatory reads:
 - `spawn-ext-guide/ai/core.md` - Machine baseline — terms, extsrc tree rules, static vs artifact, name and uniqueness, install outputs.
 - `spawn-ext-guide/ai/config-yaml.md` - Machine schema for config.yaml — keys, files/folders/skills modes, reads, ignores, setup, annotated example.
