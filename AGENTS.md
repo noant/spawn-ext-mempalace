@@ -2,7 +2,6 @@
 - Use the platform ask tool when available (R10-ask in spec/main.md); otherwise, stop and request input from the user.
 
 Read every file listed under `Mandatory reads`.
-Mandatory reads:
 
 Inspect `Contextual reads` descriptions and read only files relevant to the current task.
 Contextual reads:
