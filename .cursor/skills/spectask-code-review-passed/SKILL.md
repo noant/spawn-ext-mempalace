@@ -1,34 +1,30 @@
 ---
 name: spectask-code-review-passed
-description: After user confirms code review / debugging — Steps 6–7 then optional pattern extract (spec/main.md).
+description: After user confirms code review / debugging — Steps 7–8 then pattern extract (spec/main.md).
 ---
 
 
-**Mandatory:** read **spec/main.md** in full before acting — especially Steps 6–7 and Optional: Pattern extract.
+**Mandatory:** read **spec/main.md** in full — Steps 7-8 and Pattern extract.
 
 **Role:** `A1-drafter`
 
-**Steps:** 6 → 7 → optional Pattern extract (same run).
+**Steps:** 7 → 8 → Pattern extract (same run). `[auto]` run mode: Step 7 skipped (checkbox unchecked) — start at Step 8.
 
 **Rules:** `R1-paths`, `R2-no-clutter`, `R7-process`, `R14-changed-files`
 
-**Roles involved:** User (Step 6 confirmation); `A1-drafter` (mark 6, run 7, pattern extract)
-
 **Flow:**
 
-1. Read **spec/main.md** fully — **Step 6: Code review / debugging**, **Step 7: Design document update**, **Optional: Pattern extract (after Step 7)**.
-2. Execute **Step 6** exactly as written (mark `[V]` and prompt).
-3. Execute **Step 7** exactly as written.
-4. Execute **Optional: Pattern extract** exactly as written (or via **spectask-extract-patterns**): filter candidates, then present the entire filtered list to the user in one message in this run, then wait for the user to reply with per-candidate Required/Optional/Decline. Do not write under **`spawn/rules/`** or edit **`spawn/navigation.yaml`** until the user answers.
+1. Read **spec/main.md** fully — **Step 7**, **Step 8**, **Pattern extract (after Step 8)**.
+2. `[interactive]`: execute **Step 7** exactly as written (mark `[V]` and prompt).
+3. Execute **Step 8** exactly as written.
+4. Execute **Pattern extract** exactly as written (or via **spectask-extract-patterns**): filter candidates; `[interactive]` present the filtered list in one message and ask per-candidate Required/Optional/Decline; `[auto]` skip Present/Ask and write all survivors with auto-detected scope (Scope rule in spec/main.md).
 
 
-Hints:
-- Use the platform ask tool when available (R10-ask in spec/main.md); otherwise, stop and request input from the user.
+Before this skill, if the Spawn block instructions from `AGENTS.md` are not in context, read `AGENTS.md` first.
 
 Mandatory reads:
-- `spec/main.md` - Spec-Tasks methodology — folder structure, seven-step process, overview template.
+- `spec/main.md` - Spec-Tasks methodology — folder structure, eight-step process, overview template.
 - `spec/design.yaml` - Index of architecture documents under spec/design/ — path and description per entry.
-- `spawn/navigation.yaml` - Merged Spawn navigation (read-required, read-contextual).
 
 Contextual reads:
-- `spec/design/hla.md` - Project high-level architecture; updated in Step 7.
+- `spec/design/hla.md` - Project high-level architecture; updated in Step 8.
